@@ -13,7 +13,8 @@ import org.junit.Test;
 
 import com.lowagie.text.DocumentException;
 
-import model.User;
+import model.*;
+import persistence.TypeFinder;
 import persistence.UserFinder;
 import persistence.util.Jpa;
 
@@ -28,19 +29,24 @@ public class ExecuterTest {
 		
 		Date date = new Date(System.currentTimeMillis());
 		User user = new User("Paco", "Francisco", "francisco@gmail.com", date, "C\\Uría", "Español", "87654321P");
+		Type type = new Type(3, "Sensor");
 		
 		aS.getAF().saveData(user);
+		aS.getAF().saveType(type);
 		
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
 		
 		User user2 = UserFinder.findByEmail("francisco@gmail.com").get(0);
+		Type type2 = TypeFinder.findByCode(3).get(0);
 		
 		assertEquals(user, user2);
+		assertEquals(type, type2);
 		
 		trx.commit();
 		
 	}
+
 
 }

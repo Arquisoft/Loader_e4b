@@ -1,9 +1,16 @@
 package dbupdate;
 
 import java.util.List;
+import java.util.logging.Level;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceException;
 
 import model.Type;
 import persistence.TypeFinder;
+import persistence.util.Jpa;
+import reportwriter.ReportWriter;
 
 /**
  * Clase que implementa los métodos de la interfaz InsertType para encargarse de la gestión de tipos.
@@ -13,8 +20,28 @@ public class InsertT implements InsertType{
 
 	@Override
 	public Type save(Type tipo) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager mapper = Jpa.createEntityManager();
+		EntityTransaction trx = mapper.getTransaction();
+		trx.begin();
+
+		try {
+			List<Type> types = TypeFinder.findByCode(tipo.getCode());
+			for(Type type : types) 
+				Jpa.getManager().remove(type);
+
+			Jpa.getManager().persist(tipo);
+			trx.commit();
+		}
+		catch (PersistenceException ex) {
+			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "Error de la BBDD");
+			if (trx.isActive())
+				trx.rollback();
+		} finally {
+			if (mapper.isOpen())
+				mapper.close();
+		}
+
+		return tipo;
 	}
 
 	@Override

@@ -18,6 +18,8 @@ public class Type implements Serializable{
 	private int code;
 	private String type;
 	
+	Type(){}
+	
 	public Type(int code, String type) {
 		this.code = code;
 		this.type = type;

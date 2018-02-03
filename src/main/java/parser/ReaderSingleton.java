@@ -29,4 +29,9 @@ public class ReaderSingleton {
 			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "No se ha encontrado el archivo excel");
 		}
 	}
+	
+	public void loadMasterFile(String cad) {
+		
+	}
+	
 }

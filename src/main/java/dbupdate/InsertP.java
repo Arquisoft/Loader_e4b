@@ -66,4 +66,5 @@ public class InsertP implements Insert {
 	public List<User> findByEmail(String email) {
 		return UserFinder.findByEmail(email);
 	}
+
 }
