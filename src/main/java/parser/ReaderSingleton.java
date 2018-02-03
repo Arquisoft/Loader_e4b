@@ -10,9 +10,11 @@ import reportwriter.ReportWriter;
 public class ReaderSingleton {
 	private static ReaderSingleton instance;
 	private ReadList loader;
+	private ReadList master;
 
 	private ReaderSingleton() {
 		this.loader = new RList();
+		this.master = new RMaster();
 	}
 
 	public static ReaderSingleton getInstance() {
@@ -31,7 +33,14 @@ public class ReaderSingleton {
 	}
 	
 	public void loadMasterFile(String cad) {
-		
+		try {
+			master.load(cad);
+		}catch (FileNotFoundException e) {
+			System.err.println("No se ha encontrado el archivo csv especificado.");
+			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "No se ha encontrado el archivo csv");
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

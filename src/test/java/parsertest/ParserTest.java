@@ -59,6 +59,22 @@ public class ParserTest {
 
 		assertEquals(st.toString(), "Ana Torres Pardo ana@example.com Av. De la Constitución 8 Español 09940449X ");
 	}
+	
+	@Test
+	public void testLoadCSVExito() throws FileNotFoundException, DocumentException {
+		RMaster master = new RMaster();
+		master.load("src/test/resources/master.csv");
+		
+		assertEquals(master.getAllTypes().size(), 3);
+		
+		String[] test = {
+				"Tipo [code=1, type=Person]",
+				"Tipo [code=2, type=Entity]",
+				"Tipo [code=3, type=Sensor]"};
+		
+		for(int i=0;i<master.getAllTypes().size();i++) 
+			assertEquals(test[i],master.getAllTypes().get(i).toString());	
+	}
 
 	@Test(expected = FileNotFoundException.class)
 	public void testLoadExcelFicheroNoEncontrado() throws FileNotFoundException, DocumentException {
@@ -144,6 +160,17 @@ public class ParserTest {
 		ReaderSingleton rS1 = ReaderSingleton.getInstance();
 		rS1.loadFile("cadenaIncorrecta");
 		rS1.loadFile("test.xlsx");
+		assertEquals(rS, rS1);
+	}
+	
+	@Test
+	public void testReaderSingletonMaster() {
+		ReaderSingleton rS = ReaderSingleton.getInstance();
+		rS.loadMasterFile("cadenaIncorrecta");
+		rS.loadMasterFile("master.csv");
+		ReaderSingleton rS1 = ReaderSingleton.getInstance();
+		rS1.loadMasterFile("cadenaIncorrecta");
+		rS1.loadMasterFile("master.csv");
 		assertEquals(rS, rS1);
 	}
 
