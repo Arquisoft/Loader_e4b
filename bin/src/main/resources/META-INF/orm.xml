@@ -14,12 +14,4 @@
         <query>select u from User u where u.email = ?1</query>
     </named-query>
 
-    <named-query name="Type.findByCode">
-        <query>select t from Type where t.code = ?1</query>
-    </named-query>
-
-    <named-query name="Type.findByType">
-        <query>select t from Type where t.type = ?1</query>
-    </named-query>
-
 </entity-mappings>

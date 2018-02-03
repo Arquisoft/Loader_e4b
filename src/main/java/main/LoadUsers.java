@@ -34,17 +34,17 @@ public class LoadUsers {
 	}
 
 	private void showInfo() {
-		System.out.println("Proyecto Citizens Loader 1A");
+		System.out.println("Proyecto Loader 4B");
 		System.out.println("El objetivo de este proyecto es actuar como modulo de carga de"
 				+ "usuarios para un sistema de participacion ciudadana");
-		System.out.println("Realizado por el grupo 1A1 compuesto por: ");
-		System.out.println("Daniel Alba Muñiz (UO245288)");
-		System.out.println("Jose Luis Bugallo Gonzalez (Uo244702)");
-		System.out.println("Ignacio Escribano Burgos (UO227766)");
-		System.out.println("Daniel Duque Barrientos (UO245553)");
-		System.out.println("Ruben de la Varga Cabero (UO246977)");
+		System.out.println("Realizado por el grupo 4B1 compuesto por: ");
+		System.out.println("Alejandro García Parrondo (UO253144)");
+		System.out.println("Juan Granda Molaguero (UO244759)");
+		System.out.println("Ángela María Val Cadena (UO250972)");
+		System.out.println("Samuel Steven Ludeña Vela (UO251461)");
+		System.out.println("Óscar Marín Iglesias (UO251857)");
 		System.out.println("Para mas informacion consultar el repositorio en github con la url "
-				+ "https://github.com/Arquisoft/citizensLoader1a.git");
+				+ "https://github.com/Arquisoft/Loader_e4b");
 
 	}
 
