@@ -1,6 +1,6 @@
 package dbupdate;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -40,5 +40,29 @@ public class DbTypeTest {
 		mapper.close();
 		
 	}
+	
+	@Test
+	public void ComprobarBorrado() {
+		ActionSingleton aS = ActionSingleton.getInstance();
+		
+		Type type = new Type(999, "Prueba");
+		
+		aS.getAF().saveType(type);
+		
+		EntityManager mapper = Jpa.createEntityManager();
+		EntityTransaction trx = mapper.getTransaction();
+		trx.begin();
+		
+		List<Type> toDelete = TypeFinder.findByCode(999);
+		assertEquals(toDelete.size(), 1);
+		
+		Jpa.getManager().remove(toDelete.get(0));
+		toDelete = TypeFinder.findByCode(999);
+		assertTrue(toDelete.isEmpty());
+		
+		trx.commit();
+		mapper.close();
+	}
+
 	
 }

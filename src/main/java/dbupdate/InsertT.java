@@ -25,10 +25,10 @@ public class InsertT implements InsertType{
 		trx.begin();
 
 		try {
-			List<Type> types = TypeFinder.findByCode(tipo.getCode());
-			for(Type type : types) 
-				Jpa.getManager().remove(type);
-
+			List<Type> toDelete = findByCode(tipo.getCode());
+			for(int i=0;i<toDelete.size();i++)
+				Jpa.getManager().remove(toDelete.get(i));
+			
 			Jpa.getManager().persist(tipo);
 			trx.commit();
 		}

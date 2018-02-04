@@ -15,11 +15,12 @@ public class Type implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private int code;
 	private String type;
 	
 	Type(){}
-	
+
 	public Type(int code, String type) {
 		this.code = code;
 		this.type = type;
@@ -36,7 +37,7 @@ public class Type implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Tipo [code=" + code + ", type=" + type + "]";
+		return "Type [code=" + code + ", type=" + type + "]";
 	}
 
 	@Override

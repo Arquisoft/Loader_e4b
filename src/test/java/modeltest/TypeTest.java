@@ -36,7 +36,7 @@ public class TypeTest {
 	public void testToString() {
 		Type type = new Type(1, "Usuario");
 		
-		String resultado = "Tipo [code=1, type=Usuario]";
+		String resultado = "Type [code=1, type=Usuario]";
 		
 		assertEquals(type.toString(), resultado);
 	}

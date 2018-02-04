@@ -68,9 +68,9 @@ public class ParserTest {
 		assertEquals(master.getAllTypes().size(), 3);
 		
 		String[] test = {
-				"Tipo [code=1, type=Person]",
-				"Tipo [code=2, type=Entity]",
-				"Tipo [code=3, type=Sensor]"};
+				"Type [code=1, type=Person]",
+				"Type [code=2, type=Entity]",
+				"Type [code=3, type=Sensor]"};
 		
 		for(int i=0;i<master.getAllTypes().size();i++) 
 			assertEquals(test[i],master.getAllTypes().get(i).toString());	
@@ -112,6 +112,14 @@ public class ParserTest {
 
 		assertEquals(st.toString(),
 				"Ana Torres Pardo ana@example.com " + list3.get(3) + " Av. De la Constitución 8 Español 09940449X ");
+	}
+	
+	@Test (expected = FileNotFoundException.class)
+	public void testLoadCSVNoEncontrado() throws FileNotFoundException, DocumentException {
+		RMaster master = new RMaster();
+		master.load("src/test/resources/fallo.xlsx");
+		
+		assertEquals(master.getAllTypes().size(), 0);
 	}
 
 	@Test(expected = IOException.class)
