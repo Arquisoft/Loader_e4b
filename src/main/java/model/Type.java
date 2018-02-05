@@ -1,11 +1,14 @@
 package model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +21,8 @@ public class Type implements Serializable{
 	private Long id;
 	private int code;
 	private String type;
+	@OneToMany(mappedBy = "tipo")
+	private Set<User> usuarios = new HashSet<User>();
 	
 	Type(){}
 
@@ -70,6 +75,10 @@ public class Type implements Serializable{
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public Set<User> _getUsuarios() {
+		return this.usuarios;
 	}
 	
 	

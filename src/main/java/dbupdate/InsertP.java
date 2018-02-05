@@ -11,11 +11,14 @@ import javax.persistence.PersistenceException;
 
 import com.lowagie.text.DocumentException;
 
+import model.Association;
+import model.Type;
 import model.User;
 import parser.cartas.Letter;
 import parser.cartas.PdfLetter;
 import parser.cartas.TxtLetter;
 import parser.cartas.WordLetter;
+import persistence.TypeFinder;
 import persistence.UserFinder;
 import persistence.util.Jpa;
 import reportwriter.ReportWriter;
@@ -23,21 +26,23 @@ import reportwriter.ReportWriter;
 public class InsertP implements Insert {
 
 	@Override
-	public User save(User user) throws FileNotFoundException, DocumentException, IOException {
+	public User save(User user, String tipo) throws FileNotFoundException, DocumentException, IOException {
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
 		try {
-			if (!UserFinder.findByDNI(user.getDNI()).isEmpty()) {
+			List<Type> tipos = TypeFinder.findByCode(Integer.parseInt(tipo));
+			if (!UserFinder.findByIdent(user.getIdentificador()).isEmpty()) {
 				ReportWriter.getInstance().getWriteReport().log(Level.WARNING,
-						"El usuario con el dni " + user.getDNI() + " ya existe en la base de datos");
+						"El usuario con el dni " + user.getIdentificador() + " ya existe en la base de datos");
 				trx.rollback();
-			} else if (!UserFinder.findByEmail(user.getEmail()).isEmpty()) {
+			}else if (tipos.isEmpty()) {
 				ReportWriter.getInstance().getWriteReport().log(Level.WARNING,
-						"Ya existe un usuario con el email " + user.getEmail() + " en la base de datos");
+						"Tipo de usuario " + user.getTipo().getType() + " no reconocido");
 				trx.rollback();
-			} else {
+			}else {
 				Jpa.getManager().persist(user);
+				Association.Clasificar.link(tipos.get(0) , user);
 				trx.commit();
 				Letter letter = new PdfLetter();
 				letter.createLetter(user);
@@ -59,12 +64,12 @@ public class InsertP implements Insert {
 
 	@Override
 	public List<User> findByDNI(String dni) {
-		return UserFinder.findByDNI(dni);
+		return UserFinder.findByIdent(dni);
 	}
 
-	@Override
-	public List<User> findByEmail(String email) {
-		return UserFinder.findByEmail(email);
-	}
+//	@Override
+//	public List<User> findByEmail(String email) {
+//		return UserFinder.findByEmail(email);
+//	}
 
 }

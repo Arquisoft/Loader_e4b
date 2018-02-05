@@ -15,9 +15,9 @@ import model.User;
  *
  */
 public interface Insert {
-	User save(User user) throws FileNotFoundException, DocumentException, IOException;
+	User save(User user, String tipo) throws FileNotFoundException, DocumentException, IOException;
 
 	List<User> findByDNI(String dni);
 
-	List<User> findByEmail(String email);
+//	List<User> findByEmail(String email);
 }

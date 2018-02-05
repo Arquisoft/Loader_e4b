@@ -13,7 +13,6 @@ import com.lowagie.text.DocumentException;
 import dbupdate.InsertT;
 import executer.ActionFacade;
 import executer.ActionFacadeClass;
-
 import model.Type;
 import reportwriter.ReportWriter;
 

@@ -1,12 +1,12 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,29 +20,59 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	private String apellidos;
 	private String email;
-	private Date fechaNacimiento;
-	private String direccionPostal;
-	private String nacionalidad;
-	private String dni;
+	private String identificador;
 	private String username;
 	private String password;
+	private String localizacion;
+	@ManyToOne private Type tipo;
 
 	User() {
 	}
+	
+	public User(String identificador) {
+		this.identificador = identificador;
+	}
 
-	public User(String nombre, String apellidos, String email, Date fechaNacimiento, String direccionPostal,
-			String nacionalidad, String DNI) {
+	public User(String nombre, String localizacion, String email, String identificador) {
+		this(identificador); 
 		setNombre(nombre);
-		setApellidos(apellidos);
 		setEmail(email);
-		setFechaNacimiento(fechaNacimiento);
-		setDireccionPostal(direccionPostal);
-		setNacionalidad(nacionalidad);
-		setDNI(DNI);
-		setUsername(email);
+		setUsername(identificador);
+		setLocalizacion(localizacion);
 		generarPassword();
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	private void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	private void setLocalizacion(String loc) {
+		this.localizacion = loc;
+	}
+	
+	public String getLocalizacion() {
+		return this.localizacion;
+	}
+
+	public String getIdentificador() {
+		return identificador;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	private void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public Type getTipo() {
+		return tipo;
 	}
 
 	private void setPassword(String password) {
@@ -53,67 +83,12 @@ public class User implements Serializable {
 		this.username = username;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	private void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellidos() {
-		return apellidos;
-	}
-
-	private void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	private void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	private void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-
-	public String getDireccionPostal() {
-		return direccionPostal;
-	}
-
-	private void setDireccionPostal(String direccionPostal) {
-		this.direccionPostal = direccionPostal;
-	}
-
-	public String getNacionalidad() {
-		return nacionalidad;
-	}
-
-	private void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
-	}
-
-	public String getDNI() {
-		return dni;
-	}
-
-	private void setDNI(String DNI) {
-		this.dni = DNI;
-	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		result = prime * result + ((identificador == null) ? 0 : identificador.hashCode());
 		return result;
 	}
 
@@ -126,19 +101,18 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (dni == null) {
-			if (other.dni != null)
+		if (identificador == null) {
+			if (other.identificador != null)
 				return false;
-		} else if (!dni.equals(other.dni))
+		} else if (!identificador.equals(other.identificador))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id =" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-				+ ", fechaNacimiento=" + fechaNacimiento + ", direccionPostal=" + direccionPostal + ", nacionalidad="
-				+ nacionalidad + ", DNI=" + dni + "]";
+		return "User [id=" + id + ", nombre=" + nombre + ", email=" + email + ", dni=" + identificador + ", username=" + username
+				+ ", password=" + password + ", tipo=" + tipo + "]";
 	}
 
 	private void generarPassword() {
@@ -162,6 +136,10 @@ public class User implements Serializable {
 
 	public String getPassword() {
 		return password;
+	}
+
+	void _setTipo(Type tipo) {
+		this.tipo = tipo;	
 	}
 
 }

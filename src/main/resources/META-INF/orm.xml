@@ -6,13 +6,16 @@
 
     <!-- Aqui van las consultas sql (Finder, en un futuro) -->
     <!-- Ejemplo consulta -->
-    <named-query name="User.findByDni">
-        <query>select u from User u where u.dni = ?1</query>
+<!-- USER -->
+    <named-query name="User.findByIdent">
+        <query>select u from User u where u.identificador = ?1</query>
     </named-query>
 
     <named-query name="User.findByEmail">
         <query>select u from User u where u.email = ?1</query>
     </named-query>
+
+<!-- TYPE -->
 
     <named-query name="Type.findByCode">
         <query>select u from Type u where u.code = ?1</query>
