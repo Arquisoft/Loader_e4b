@@ -94,7 +94,6 @@ public class DbTest {
 				Jpa.getManager().remove(aBorrar.get(i));
 			}	
 		}
-		
 		trx.commit();
 		mapper.close();
 	}
