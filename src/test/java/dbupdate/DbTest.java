@@ -88,9 +88,13 @@ public class DbTest {
 		trx.begin();
 		List<User> aBorrar = UserFinder.findByIdent("87654321P");
 		
-		System.out.println(aBorrar.get(0));
+		if(!aBorrar.isEmpty()) {
+			for(int i = aBorrar.size()-1; i >= 0; i--) {
+				System.out.println(aBorrar.get(i));
+				Jpa.getManager().remove(aBorrar.get(i));
+			}	
+		}
 		
-		Jpa.getManager().remove(aBorrar.get(0));
 		trx.commit();
 		mapper.close();
 	}
