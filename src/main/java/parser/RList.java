@@ -119,7 +119,7 @@ public class RList implements ReadList {
 		
 		
 		InsertR insert = new InsertR();
-		insert.save(user,list.get(3).getStringCellValue());
+		insert.save(user,"1");
 		//getaF().saveData(user);
 	}
 	
