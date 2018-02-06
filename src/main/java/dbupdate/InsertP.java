@@ -38,7 +38,7 @@ public class InsertP implements Insert {
 				trx.rollback();
 			}else if (tipos.isEmpty()) {
 				ReportWriter.getInstance().getWriteReport().log(Level.WARNING,
-						"Tipo de usuario " + user.getTipo().getType() + " no reconocido");
+						"Tipo de usuario " + tipo + " no reconocido");
 				trx.rollback();
 			}else {
 				Jpa.getManager().persist(user);

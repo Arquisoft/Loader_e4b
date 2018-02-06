@@ -87,6 +87,9 @@ public class DbTest {
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
 		List<User> aBorrar = UserFinder.findByIdent("87654321P");
+		
+		System.out.println(aBorrar.get(0));
+		
 		Jpa.getManager().remove(aBorrar.get(0));
 		trx.commit();
 		mapper.close();
