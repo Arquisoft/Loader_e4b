@@ -2,7 +2,6 @@ package dbupdate;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -11,54 +10,71 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.lowagie.text.DocumentException;
 
 import executer.ActionSingleton;
+import model.Type;
 import model.User;
 import persistence.UserFinder;
 import persistence.util.Jpa;
 
 public class DbTest {
+	
+	@Before
+	public void setUp() {
+		ActionSingleton aS = ActionSingleton.getInstance();
+		
+		Type type = new Type(1, "Usuario");
+		Type type2 = new Type(2, "Entity");
+		
+		aS.getAF().saveType(type);
+		aS.getAF().saveType(type2);
+		
+		EntityManager mapper = Jpa.createEntityManager();
+		EntityTransaction trx = mapper.getTransaction();
+		trx.begin();
+		trx.commit();
+		mapper.close();
+	}
 
 	@Test
 	public void usuarioYaExistenteDni() throws FileNotFoundException, DocumentException, IOException {
 		ActionSingleton aS = ActionSingleton.getInstance();
-		Date date = new Date(System.currentTimeMillis());
-		User user1 = new User("Paco", "Francisco", "francisco@gmail.com", date, "C\\Uría", "Español", "87654321P");
-		User user2 = new User("Paco", "Francisco", "franci@gmail.com", date, "C\\Uría", "Español", "87654321P");
+		
+		User user1 = new User("Paco", "-22.971436, -43.182565", "francisco@gmail.com", "87654321P");
+		User user2 = new User("Paco", "-22.971436, -43.182565", "francisco@gmail.com", "87654321P");
 
-		aS.getAF().saveData(user1);
-		aS.getAF().saveData(user2);
+		aS.getAF().saveData(user1, "1");
+		aS.getAF().saveData(user2, "1");
 
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
 
 		List<User> test = UserFinder.findByIdent("87654321P");
-		assertEquals(test.get(0).getEmail(), "francisco@gmail.com");
+		assertTrue(test.size() == 1);
 
 		trx.commit();
 		mapper.close();
 	}
 
 	@Test
-	public void usuarioYaExistenteEmail() throws FileNotFoundException, DocumentException, IOException {
+	public void usuarioConTipoNoVálido() throws FileNotFoundException, DocumentException, IOException {
 		ActionSingleton aS = ActionSingleton.getInstance();
-		Date date = new Date(System.currentTimeMillis());
-		User user1 = new User("Paco", "Francisco", "francisco@gmail.com", date, "C\\Uría", "Español", "87654321P");
-		User user3 = new User("Paco", "Francisco", "francisco@gmail.com", date, "C\\Uría", "Español", "87654353Y");
+		
+		User user1 = new User("Paco", "-22.971436, -43.182565", "francisco@gmail.com", "87654321P");
 
-		aS.getAF().saveData(user1);
-		aS.getAF().saveData(user3);
+		aS.getAF().saveData(user1, "4");
 
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
 
-		List<User> test = UserFinder.findByEmail("francisco@gmail.com");
-		assertEquals(test.get(0).getDNI(), "87654321P");
+		List<User> test = UserFinder.findByIdent("87654321P");
+		assertTrue(test.isEmpty());
 
 		trx.commit();
 		mapper.close();

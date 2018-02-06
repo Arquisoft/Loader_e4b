@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Date;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -27,21 +26,20 @@ public class ExecuterTest {
 		
 		assertEquals(aS, aS2);
 		
-		Date date = new Date(System.currentTimeMillis());
-		User user = new User("Paco", "Francisco", "francisco@gmail.com", date, "C\\Uría", "Español", "87654321P");
+		User user1 = new User("Paco", "-22.971436, -43.182565", "francisco@gmail.com", "87654321P");
 		Type type = new Type(3, "Sensor");
 		
-		aS.getAF().saveData(user);
 		aS.getAF().saveType(type);
+		aS.getAF().saveData(user1, "3");	
 		
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
 		
-		User user2 = UserFinder.findByEmail("francisco@gmail.com").get(0);
+		User user2 = UserFinder.findByIdent("87654321P").get(0);
 		Type type2 = TypeFinder.findByCode(3).get(0);
 		
-		assertEquals(user, user2);
+		assertEquals(user1, user2);
 		assertEquals(type, type2);
 		
 		trx.commit();

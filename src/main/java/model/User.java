@@ -111,8 +111,8 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", nombre=" + nombre + ", email=" + email + ", dni=" + identificador + ", username=" + username
-				+ ", password=" + password + ", tipo=" + tipo + "]";
+		return "User [id=" + id + ", nombre=" + nombre + ", email=" + email + ", identificador=" + identificador
+				+ ", username=" + username + ", localizacion=" + localizacion + ", tipo=" + tipo + "]";
 	}
 
 	private void generarPassword() {
