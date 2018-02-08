@@ -145,7 +145,7 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * Método que genera una contraseña para el usuario.
+	 * Metodo que genera una contrase�a para el usuario.
 	 */
 	private void generarPassword() {
 		StringBuffer pass = new StringBuffer();
