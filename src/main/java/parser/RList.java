@@ -98,14 +98,29 @@ public class RList implements ReadList {
 		}
 	}
 
+	/**
+	 * Devuelve la instancia de action facade de la clase.
+	 * @return Action facade de la clase.
+	 */
 	public ActionFacade getaF() {
 		return aF;
 	}
 
+	/**
+	 * Setter para colocar un action facade en la clase.
+	 * @param aF a colocar.
+	 */
 	public void setaF(ActionFacade aF) {
 		this.aF = aF;
 	}
 
+	/**
+	 * Crea un nuevo usuario para la base de datos y lo inserta en esta.
+	 * @param list fila del fichero excel a operar.
+	 * @throws FileNotFoundException 
+	 * @throws DocumentException
+	 * @throws IOException
+	 */
 	private void crearUsuarios(List<XSSFCell> list) throws FileNotFoundException, DocumentException, IOException {
 //		User user = new User(list.get(0).getStringCellValue(), list.get(1).getStringCellValue(),
 //				list.get(2).getStringCellValue(), list.get(3).getDateCellValue(), 
@@ -123,6 +138,10 @@ public class RList implements ReadList {
 		//getaF().saveData(user);
 	}
 	
+	/**
+	 * Devuelve un arraylist con todas las filas del excel.
+	 * @return Todas las filas del excel.
+	 */
 	public ArrayList<List<XSSFCell>> getAllUsers(){
 		return allUsers;
 	}
