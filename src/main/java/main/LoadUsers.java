@@ -42,7 +42,7 @@ public class LoadUsers {
 		else if (args[0].equals("load")) {
 			if (args.length < 2)
 				System.err.println(
-						"La operación load necesita al menos otro " + "argumento con la ubicación del fichero");
+						"La operacion load necesita al menos otro " + "argumento con la ubicacion del fichero");
 			else {
 				ReaderSingleton.getInstance().loadMasterFile("master.csv");
 				
@@ -61,11 +61,11 @@ public class LoadUsers {
 		System.out.println("El objetivo de este proyecto es actuar como modulo de carga de"
 				+ "usuarios para un sistema de participacion ciudadana");
 		System.out.println("Realizado por el grupo 4B1 compuesto por: ");
-		System.out.println("Alejandro García Parrondo (UO253144)");
+		System.out.println("Alejandro Garcia Parrondo (UO253144)");
 		System.out.println("Juan Granda Molaguero (UO244759)");
-		System.out.println("Ángela María Val Cadena (UO250972)");
-		System.out.println("Samuel Steven Ludeña Vela (UO251461)");
-		System.out.println("Óscar Marín Iglesias (UO251857)");
+		System.out.println("Angela Val Cadena (UO250972)");
+		System.out.println("Samuel Steven Lude�a Vela (UO251461)");
+		System.out.println("Oscar Marin Iglesias (UO251857)");
 		System.out.println("Para mas informacion consultar el repositorio en github con la url "
 				+ "https://github.com/Arquisoft/Loader_e4b");
 
