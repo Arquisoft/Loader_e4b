@@ -7,6 +7,13 @@
 
 Skeleton of Citizens Loader module
 
+#Authors 2017-2018  
+Óscar Marín Iglesias (UO251857)
+Ángela María Val Cadena (UO250972)
+Alejandro García Parrondo (UO253144)
+Samuel Steven Ludeña Vela (UO251461)
+Juan Granda Molaguero (UO244759)
+
 # Authors
 
 Daniel Alba Muñiz (UO245188)
