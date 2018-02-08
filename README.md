@@ -22,16 +22,15 @@ El fichero que cargaremos para los usuarios se la pasa como parametro a load, es
 mvn exec:java -Dexec.mainClass="main.LoadUsers" -Dexec.args="load fichero.xlsx"
 
 # Authors 2017-2018  
-Óscar Marín Iglesias (UO251857)
-Ángela María Val Cadena (UO250972)
-Alejandro García Parrondo (UO253144)
-Samuel Steven Ludeña Vela (UO251461)
-Juan Granda Molaguero (UO244759)
+Óscar Marín Iglesias (UO251857)<br>
+Ángela María Val Cadena (UO250972)<br>
+Alejandro García Parrondo (UO253144)<br>
+Samuel Steven Ludeña Vela (UO251461)<br>
+Juan Granda Molaguero (UO244759)<br>
 
 # Authors
-
-Daniel Alba Muñiz (UO245188)
-José Luis Bugallo González (UO244702)
-Ignacio Escribano Burgos (UO227766)
-Daniel Duque Barrientos (UO245553)
-Rubén de la Varga Cabero (UO246977)
+Daniel Alba Muñiz (UO245188)<br>
+José Luis Bugallo González (UO244702)<br>
+Ignacio Escribano Burgos (UO227766)<br>
+Daniel Duque Barrientos (UO245553)<br>
+Rubén de la Varga Cabero (UO246977)<br>

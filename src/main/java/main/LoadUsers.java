@@ -5,35 +5,18 @@ import com.lowagie.text.DocumentException;
 import parser.ReaderSingleton;
 
 /**
- * Main application for the Loader module
+ * Main application
  * 
- * @author Autores: 1A1
- * @author Actualizado por: e4b
+ * @author 1A1
  *
  */
 public class LoadUsers {
-	
-	/**
-	 * Metodo main de la aplicacion.
-	 * @param args a comprobar en el metodo run.
-	 * @throws DocumentException en caso de que haya problemas generando las cartas.
-	 */
+
 	public static void main(String... args) throws DocumentException {
 		final LoadUsers runner = new LoadUsers();
 		runner.run(args);
 	}
-	
-	/**
-	 * Metodo principal para ejecutar la aplicacion.
-	 * @param args = <br>
-	 * <b>--help</b> Ejecuta el metodo showHelp.<br>
-	 * <b>info</b> Ejecuta el metodo showInfo. <br>
-	 * <b>load</b> Carga un fichero de usuarios y un fichero de tipos de usuario.
-	 * Los tipos de usuario se cargan automaticamente desde el fichero master.csv donde el estilo del csv es codigo,tipo.<br>
-	 * Un ejemplo de tipos del csv seria 1,Usuario. 2,Entidad.<br>
-	 * Un ejemplo de load seria load ruta/archivo.xlsx
-	 * @throws DocumentException en caso de que haya problemas generando las cartas de error.
-	 */
+
 	private void run(String... args) throws DocumentException {
 		if (args.length == 0 || args[0].equals("--help"))
 			showHelp();
@@ -52,10 +35,7 @@ public class LoadUsers {
 		}
 		
 	}
-	
-	/**
-	 * Muestra informacion de la aplicacion.
-	 */
+
 	private void showInfo() {
 		System.out.println("Proyecto Loader 4B");
 		System.out.println("El objetivo de este proyecto es actuar como modulo de carga de"
@@ -70,10 +50,7 @@ public class LoadUsers {
 				+ "https://github.com/Arquisoft/Loader_e4b");
 
 	}
-	
-	/**
-	 * Muestra una ayuda de la aplicacion.
-	 */
+
 	private void showHelp() {
 		System.out.println("Manual de ayuda para el uso de la aplicacion");
 		System.out.println("La aplicacion tiene implementadas las operaciones info, load y help");

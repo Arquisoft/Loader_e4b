@@ -10,9 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- * Clase para gestionar los usuarios de la base de datos.
- */
 @Entity
 @Table(name = "Users")
 public class User implements Serializable {

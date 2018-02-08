@@ -15,22 +15,8 @@ import model.User;
  *
  */
 public interface Insert {
-	/**
-	 * Guarda un usuario en la base de datos.
-	 * @param user a guardar.
-	 * @param tipo del usuario.
-	 * @return Usuario devuelto desde el sistema de persistencia.
-	 * @throws FileNotFoundException
-	 * @throws DocumentException
-	 * @throws IOException
-	 */
 	User save(User user, String tipo) throws FileNotFoundException, DocumentException, IOException;
-	
-	/**
-	 * Devuelve la lista de usuarios con un dni dado.
-	 * @param dni a buscar.
-	 * @return Lista de usuarios con el dni dado.
-	 */
+
 	List<User> findByDNI(String dni);
 
 }

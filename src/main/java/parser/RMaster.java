@@ -55,37 +55,20 @@ public class RMaster implements ReadList{
 		}
 	}
 	
-	/**
-	 * Dada una linea del fichero maestro crea un tipo y lo inserta en la base de datos.
-	 * @param tipo a insertar en la base de datos.
-	 * @return Tipo despues de la gestion de persistencia.
-	 */
 	private Type crearTipo(String[] tipo) {
 		Type type = new Type(Integer.valueOf(tipo[0]), tipo[1]);
 		new InsertT().save(type);
 		return type;
 	}
 
-	/**
-	 * Devuelve la instancia de action facade de la clase.
-	 * @return Action facade de la clase.
-	 */
 	public ActionFacade getaF() {
 		return aF;
 	}
 
-	/**
-	 * Setter para colocar un action facade en la clase.
-	 * @param aF a colocar.
-	 */
 	public void setaF(ActionFacade aF) {
 		this.aF = aF;
 	}
 	
-	/**
-	 * Devuelve una lista con todas las filas del fichero maestro.
-	 * @return Todas las filas del fichero maestro.
-	 */
 	public List<Type> getAllTypes(){
 		return allTypes;
 	}
