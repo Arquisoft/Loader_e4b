@@ -11,9 +11,6 @@ import dbupdate.InsertP;
 import model.User;
 import persistence.UserFinder;
 
-/**
- * Clase que gestiona los usuarios de la base de datos.
- */
 public class InsertR implements Insert {
 
 	@Override

@@ -11,9 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/**
- * Clase para gestionar los tipos de usuarios en la base de datos.
- */
 @Entity
 @Table(name = "UserType")
 public class Type implements Serializable{
