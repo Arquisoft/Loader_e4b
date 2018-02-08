@@ -7,6 +7,9 @@ import dbupdate.InsertType;
 import model.Type;
 import persistence.TypeFinder;
 
+/**
+ * Clase que implemente los metodos de la interfaz InsertType para gestionar los tipos en la base de datos.
+ */
 public class InsertM implements InsertType{
 
 	@Override
