@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,21 +23,49 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String nombre;
+	
 	private String email;
+	
+	@Column(unique = true)
 	private String identificador;
+	
 	private String username;
+	
 	private String password;
+	
 	private String localizacion;
+	
 	@ManyToOne private Type tipo;
 
 	User() {
 	}
 	
+	/**
+	 * Constructor minimo de la clase User. Crea un objeto User 
+	 * asociandole el identificador pasado por parámetro.
+	 * @param identificador identificador del usuario. Tipo String
+	 */
 	public User(String identificador) {
 		this.identificador = identificador;
 	}
 
+	/**
+	 * Constructor de la clase User. Crea un objeto User y le asocia 
+	 * un nombre, localizacion, email e identificador dados. Además, 
+	 * establece el identificador como nombre de usuario y se genera una 
+	 * contraseña.
+	 * @param nombre nombre del usuario. Tipo String
+	 * @param localizacion localización en la que se encuentra el usuario. 
+	 * Este campo es opcional para usuarios de tipo Entity y Person
+	 * @param email Correo electrónico de contacto. En el caso de sensores 
+	 * u otro tipo de agentes automáticos, puede ser el correo electrónico 
+	 * de la persona que lo administra.
+	 * @param identificador Identificador del agente. En caso de personas 
+	 * físicas o entidades puede ser el CIF. Este identificador será único 
+	 * en el sistema y será el nombre de usuario. 
+	 */
 	public User(String nombre, String localizacion, String email, String identificador) {
 		this(identificador); 
 		setNombre(nombre);
@@ -118,6 +147,9 @@ public class User implements Serializable {
 				+ ", username=" + username + ", localizacion=" + localizacion + ", tipo=" + tipo + "]";
 	}
 
+	/**
+	 * Método que genera una contraseña para el usuario.
+	 */
 	private void generarPassword() {
 		StringBuffer pass = new StringBuffer();
 		int low = 65;
