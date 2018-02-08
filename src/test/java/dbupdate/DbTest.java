@@ -62,7 +62,7 @@ public class DbTest {
 	}
 
 	@Test
-	public void usuarioConTipoNoVálido() throws FileNotFoundException, DocumentException, IOException {
+	public void usuarioConTipoNoValido() throws FileNotFoundException, DocumentException, IOException {
 		ActionSingleton aS = ActionSingleton.getInstance();
 		
 		User user1 = new User("Paco", "-22.971436, -43.182565", "francisco@gmail.com", "87654321P");
