@@ -27,17 +27,10 @@ public class LoadUsers {
 				System.err.println(
 						"La operacion load necesita al menos otro " + "argumento con la ubicacion del fichero");
 			else {
+				ReaderSingleton.getInstance().loadMasterFile("master.csv");
+				
 				for (int i = 1; i <= args.length - 1; i++)
 					ReaderSingleton.getInstance().loadFile(args[i]);
-			}
-		}
-		else if(args[0].equals("loadmaster")) {
-			if (args.length < 2)
-				System.err.println(
-						"La operacion loadmaster necesita al menos otro " + "argumento con la ubicacion del fichero");
-			else {
-				for (int i = 1; i <= args.length - 1; i++)
-					ReaderSingleton.getInstance().loadMasterFile(args[i]);
 			}
 		}
 		
@@ -63,8 +56,8 @@ public class LoadUsers {
 		System.out.println("La aplicacion tiene implementadas las operaciones info, load y help");
 		System.out.println("	info: Muestra informacion relacionada con el proyecto, como los autores");
 		System.out.println(
-				"	load [file]: Permite cargar un conjunto de ficheros excel con usuarios " + "en la base de datos");
-		System.out.println("loadmaster [file]: Permite cargar un fichero maestro con tipos de usuario en la base de datos");
+				"	load [file]: Permite cargar un conjunto de ficheros excel con usuarios en la base de datos, para cargar los usuarios "
+				+ "estos deben de tener tipos válidos que se cargan desde el fichero master.csv");
 		System.out.println("	--help: Muestra este menu de ayuda. Si no se proporcionan parametros "
 				+ "a la aplicacion se mostrara este menu");
 	}
