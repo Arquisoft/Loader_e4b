@@ -1,4 +1,4 @@
-# citizensLoader1a
+# Loader e4b
 
 [![Join the chat at https://gitter.im/Arquisoft/citizensLoader1a](https://badges.gitter.im/Arquisoft/citizensLoader1a.svg)](https://gitter.im/Arquisoft/citizensLoader1a?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/Arquisoft/citizensLoader1a.svg?branch=master)](https://travis-ci.org/Arquisoft/citizensLoader1a)
@@ -6,6 +6,17 @@
 [![codecov](https://codecov.io/gh/Arquisoft/citizensLoader1a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/citizensLoader1a)
 
 Skeleton of Loader module
+
+# Como ejecutar
+Para ejecutar la aplicación hace falta tener maven correctamente instalado, se puede instalar siguiendo estas instrucciones en caso de no tenerlo: https://www.mkyong.com/maven/how-to-install-maven-in-windows/
+Una vez instalado y en la raiz del proyecto, es decir donde se pueden ver las carpetas src, cartas, bin... podemos ejecutar el siguiente comando para ejecutar la aplicación: mvn exec:java -Dexec.mainClass="main.LoadUsers", este comando ejecutará la aplicación sin argumentos, pero la aplicación tiene varios argumentos para funcionar:
+	* --help: nos mostrará una ayuda sobre la aplicación, para ejecutar este comando ejecutaremos el siguiente comando:
+		mvn exec:java -Dexec.mainClass="main.LoadUsers" -Dexec.args="--help"
+	* info: nos mostrará iformación acerca de la aplicación, para ejecutar este comando ejecutaremos el siguiente comando:
+		mvn exec:java -Dexec.mainClass="main.LoadUsers" -Dexec.args="info"
+	* load: nos permite cargar un fichero maestro de tipos y unos usuarios a la base de datos, ambos vienen dados en ficheros, el fichero maestro 			está en la raiz de la aplicación y se llama master.csv, el estilo para es código,tipo es decir un tipo de usuario tiene un código y 			el nombre de este tipo, por ejemplo: 1,Usuario o 2,Sensor.
+			El fichero que cargaremos para los usuarios se la pasa como parametro a load, es decir este puede estar en cualquier parte del 			ordenador, para ejecutar este comando usaremos lo siguiente:
+			mvn exec:java -Dexec.mainClass="main.LoadUsers" -Dexec.args="load fichero.xlsx"
 
 # Authors 2017-2018  
 Óscar Marín Iglesias (UO251857)
