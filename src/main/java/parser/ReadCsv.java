@@ -18,8 +18,7 @@ public abstract class ReadCsv implements ReadList{
 		String line = "";
 		int i = 0;
 		
-		try {
-			
+		try {			
 			br = new BufferedReader(new FileReader(path));
 			while ((line = br.readLine()) != null) {				
 				addMethod(line);

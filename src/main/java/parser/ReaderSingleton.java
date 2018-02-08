@@ -74,7 +74,7 @@ public class ReaderSingleton {
 		String extension = linea[linea.length -1];		
 		if(extension.equals("xlsx")){
 			this.loader = xlsx;
-		}
+		} 
 		else if(extension.equals("csv")){
 			this.loader = csv;
 		}

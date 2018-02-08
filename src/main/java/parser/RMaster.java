@@ -21,7 +21,7 @@ public class RMaster extends ReadCsv{
 	protected void addMethod(String line) {
 		String[] tipo = line.split(",");
 		Type type = crearTipo(tipo);
-		allTypes.add(type);
+		allTypes.add(type); 
 	}
 
 	/**

@@ -17,7 +17,7 @@ public class RCsv extends ReadCsv{
 	protected void addMethod(String line) throws FileNotFoundException, DocumentException, IOException {
 		String[] tipo = line.split(",");
 		for(int i=0; i<tipo.length; i++) {
-			System.out.print(tipo[i] + " ; ");
+			System.out.print(tipo[i] + " ; "); 
 		}
 		System.out.println();
 		crearUsuarios(tipo);
