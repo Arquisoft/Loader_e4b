@@ -56,6 +56,7 @@ public class DbTest {
 
 		List<User> test = UserFinder.findByIdent("87654321P");
 		assertTrue(test.size() == 1);
+		assertFalse(test.isEmpty());
 
 		trx.commit();
 		mapper.close();
@@ -78,8 +79,9 @@ public class DbTest {
 
 		trx.commit();
 		mapper.close();
-
 	}
+	
+	
 
 	@After
 	public void deleting() {

@@ -51,7 +51,6 @@ public class UserTest {
 		assertEquals(user4.hashCode(), user5.hashCode());
 		assertNotEquals(user2.hashCode(), user3.hashCode());
 
-		System.out.println(user1.toString());
 	}
 
 	@Test
