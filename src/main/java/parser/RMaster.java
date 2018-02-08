@@ -1,60 +1,29 @@
 package parser;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-
-import com.lowagie.text.DocumentException;
 
 import dbupdate.InsertT;
 import executer.ActionFacade;
 import executer.ActionFacadeClass;
 import model.Type;
-import reportwriter.ReportWriter;
 
-public class RMaster implements ReadList{
+public class RMaster extends ReadCsv{
 	private ActionFacade aF = new ActionFacadeClass();
 	private ArrayList<Type> allTypes = new ArrayList<Type>();
 
+	/**
+	 * Crea el tipo de usuario y lo agrega
+	 * @param line, viene la informacion del identificador y tipo.
+	 * 
+	 */
 	@Override
-	public void load(String path) throws FileNotFoundException, DocumentException {
-		BufferedReader br = null;
-		String line = "";
-		int i = 0;
-		
-		try {
-			
-			br = new BufferedReader(new FileReader(path));
-			while ((line = br.readLine()) != null) {
-				String[] tipo = line.split(",");
-				Type type = crearTipo(tipo);
-				allTypes.add(type);
-				i++;
-			}
-
-		} 
-		catch (FileNotFoundException e) {
-			throw e;
-		} 
-		catch (IOException e) {
-			System.err.println("Problema con la lectura del excel en la linea " + i);
-			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "Problema con la lectura del excel en la linea " + i);
-		} 
-		finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+	protected void addMethod(String line) {
+		String[] tipo = line.split(",");
+		Type type = crearTipo(tipo);
+		allTypes.add(type);
 	}
-	
+
 	/**
 	 * Dada una linea del fichero maestro crea un tipo y lo inserta en la base de datos.
 	 * @param tipo a insertar en la base de datos.
@@ -89,5 +58,6 @@ public class RMaster implements ReadList{
 	public List<Type> getAllTypes(){
 		return allTypes;
 	}
+
 
 }

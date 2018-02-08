@@ -11,12 +11,17 @@ public class ReaderSingleton {
 	private static ReaderSingleton instance;
 	private ReadList loader;
 	private ReadList master;
+	private ReadList xlsx;
+	private ReadList csv;
+	
 
 	/**
 	 * Constructor privado para construir un patron singleton.
 	 */
 	private ReaderSingleton() {
-		this.loader = new RList();
+		this.xlsx = new RList();
+		this.csv = new RCsv();	
+		this.loader = xlsx;
 		this.master = new RMaster();
 	}
 
@@ -37,10 +42,11 @@ public class ReaderSingleton {
 	 */
 	public void loadFile(String cad) throws DocumentException {
 		try{
+			setLoader(cad);
 			loader.load(cad);
 		}catch (FileNotFoundException e) {
-			System.err.println("No se ha encontrado el archivo excel especificado.");
-			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "No se ha encontrado el archivo excel");
+			System.err.println("No se ha encontrado el archivo especificado.");
+			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "No se ha encontrado el archivo");
 		}
 	}
 	
@@ -56,6 +62,21 @@ public class ReaderSingleton {
 			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "No se ha encontrado el archivo csv");
 		} catch (DocumentException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Selecciona el modo en el que se van a leer los documentos xlsx o csv
+	 * @param cad: ruta donde esta el fichero.
+	 */
+	public void setLoader(String cad) {
+		String[] linea = cad.split("\\.");
+		String extension = linea[linea.length -1];		
+		if(extension.equals("xlsx")){
+			this.loader = xlsx;
+		}
+		else if(extension.equals("csv")){
+			this.loader = csv;
 		}
 	}
 	
