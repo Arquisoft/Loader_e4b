@@ -32,6 +32,7 @@ public class User implements Serializable {
 	
 	private String password;
 	
+	@Column (nullable = true)
 	private String localizacion;
 	
 	@ManyToOne private Type tipo;
