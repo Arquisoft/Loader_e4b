@@ -6,17 +6,22 @@ package model;
  */
 public class Association {
 
+	/**
+	 * Clase que se encarga de asignarle a los usuarios (User) un tipo específico (Type).
+	 * @author Ángela Val
+	 *
+	 */
 	public static class Clasificar {
 
+		/**
+		 * Método que asocia el tipo pasado por parámetro al cliente dado.
+		 * @param tipo tipo del usuario. Tipo Type.
+		 * @param usuario usuario al que se le quiere asignar un tipo. Tipo User
+		 */
 		public static void link(Type tipo, User usuario) {
 			tipo._getUsuarios().add(usuario);
 			usuario._setTipo(tipo);		
 		}
-
-//		public static void unlink(Type tipo, User usuario) {
-//			usuario._setTipo(null);
-//			tipo._getUsuarios().remove(usuario);
-//		}
 	}
 	
 }

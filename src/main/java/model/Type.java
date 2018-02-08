@@ -19,16 +19,26 @@ import javax.persistence.Table;
 public class Type implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private int code;
 	private String type;
+	
 	@OneToMany(mappedBy = "tipo")
 	private Set<User> usuarios = new HashSet<User>();
 	
 	Type(){}
 
+	/**
+	 * Constructor de la clase Type. Crea un objeto 
+	 * al que se le asigna un código y un texto que identifica 
+	 * el tipo de usuario.
+	 * @param code codigo del tipo. Tipo int
+	 * @param type nombre asociado al tipo. Tipo String
+	 */
 	public Type(int code, String type) {
 		this.code = code;
 		this.type = type;

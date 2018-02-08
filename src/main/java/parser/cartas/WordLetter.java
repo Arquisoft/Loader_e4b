@@ -16,6 +16,7 @@ import com.lowagie.text.DocumentException;
 public class WordLetter extends Letter{
 	private FileOutputStream carta;
 	
+	@Override
 	public void createLetter(User user) throws FileNotFoundException, DocumentException, IOException {
 		XWPFDocument documento = new XWPFDocument();
 		File folder = new File("carta/word");

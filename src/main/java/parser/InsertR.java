@@ -25,9 +25,4 @@ public class InsertR implements Insert {
 	public List<User> findByDNI(String dni) {
 		return UserFinder.findByIdent(dni);
 	}
-
-//	@Override
-//	public List<User> findByEmail(String email) {
-//		return UserFinder.findByEmail(email);
-//	}
 }

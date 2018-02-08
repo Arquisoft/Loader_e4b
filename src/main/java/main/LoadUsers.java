@@ -42,7 +42,7 @@ public class LoadUsers {
 		else if (args[0].equals("load")) {
 			if (args.length < 2)
 				System.err.println(
-						"La operacion load necesita al menos otro " + "argumento con la ubicacion del fichero");
+						"La operación load necesita al menos otro " + "argumento con la ubicación del fichero");
 			else {
 				ReaderSingleton.getInstance().loadMasterFile("master.csv");
 				

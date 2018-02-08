@@ -12,6 +12,8 @@ import model.User;
 
 public class PdfLetter extends Letter{
 	private Document document;
+	
+	@Override
 	public  void createLetter(User user) throws DocumentException, FileNotFoundException{
 		document = null;
 		FileOutputStream letter = null;

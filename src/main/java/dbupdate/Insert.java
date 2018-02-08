@@ -33,5 +33,4 @@ public interface Insert {
 	 */
 	List<User> findByDNI(String dni);
 
-//	List<User> findByEmail(String email);
 }

@@ -19,8 +19,4 @@ public class UserFinder {
 				setParameter(1, id).getResultList();
 	}
 
-//	public static List<User> findByEmail(String email) {
-//		return Jpa.getManager().createNamedQuery("User.findByEmail", User.class).
-//				setParameter(1, email).getResultList();
-//	}
 }

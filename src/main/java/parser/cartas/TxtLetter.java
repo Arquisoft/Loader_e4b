@@ -10,6 +10,7 @@ import model.User;
 public class TxtLetter extends Letter{
 	private Writer writer;
 
+	@Override
 	public void createLetter(User user) throws IOException{
 		File letter = new File("cartas/txt/" + user.getIdentificador() + ".txt");
 		writer = new FileWriter(letter);

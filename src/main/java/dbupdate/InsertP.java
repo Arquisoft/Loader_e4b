@@ -67,9 +67,5 @@ public class InsertP implements Insert {
 		return UserFinder.findByIdent(dni);
 	}
 
-//	@Override
-//	public List<User> findByEmail(String email) {
-//		return UserFinder.findByEmail(email);
-//	}
 
 }
