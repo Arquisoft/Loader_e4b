@@ -5,7 +5,11 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e680327c40a44a6b8378a8171066e341)](https://www.codacy.com/app/jelabra/citizensLoader1a?utm_source=github.com&utm_medium=referral&utm_content=Arquisoft/citizensLoader1a&utm_campaign=badger)
 [![codecov](https://codecov.io/gh/Arquisoft/citizensLoader1a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/citizensLoader1a)
 
-Skeleton of Loader module
+Este módulo se encarga de cargar los datos de los agentes que podrán enviar incidencias al sistema, analiza sus datos y crea un informe de errores, si se producen. <br>
+Por cada agente, se almacena la información proporcionada, junto con una clave de acceso que se genera
+aleatoriamente. <br>
+Toda esa información es almacenada en una base de datos que será utilizada por el otro módulo (Agents).
+Además, se crea una lista de cartas personalizadas para informar del usuario y clave introducido en el sistema y que se enviarán a los correos electrónicos que se han indicado. 
 
 # Como ejecutar
 Para ejecutar la aplicación hace falta tener maven correctamente instalado, se puede instalar siguiendo estas instrucciones en caso de no tenerlo: https://www.mkyong.com/maven/how-to-install-maven-in-windows/ <br>
