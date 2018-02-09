@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import executer.ActionSingleton;
@@ -16,39 +17,39 @@ import persistence.util.Jpa;
 
 public class DbTypeTest {
 
-	@Test
-	public void ComprobarCargaTipo() {
+	@Before
+	public void CargarTipos(){
 		ActionSingleton aS = ActionSingleton.getInstance();
-		
+
 		Type type = new Type(1, "Usuario");
 		Type type2 = new Type(2, "Entity");
-		
+
 		aS.getAF().saveType(type);
 		aS.getAF().saveType(type2);
-		
+	}
+
+	@Test
+	public void ComprobarCargaTipo() {
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
-		trx.begin();
-		
+
 		List<Type> test = TypeFinder.findByCode(1);
 		assertEquals(test.get(0).getType(), "Usuario");
 		
 		List<Type> test2 = TypeFinder.findByType("Entity");
 		assertEquals(test2.get(0).getCode(), 2);
 
-		trx.commit();
 		mapper.close();
-		
 	}
 	
 	@Test
 	public void ComprobarBorrado() {
 		ActionSingleton aS = ActionSingleton.getInstance();
-		
+
 		Type type = new Type(999, "Prueba");
-		
+
 		aS.getAF().saveType(type);
-		
+
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
