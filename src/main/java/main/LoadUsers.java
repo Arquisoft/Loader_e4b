@@ -34,7 +34,7 @@ public class LoadUsers {
 	 * Un ejemplo de load seria load ruta/archivo.xlsx
 	 * @throws DocumentException en caso de que haya problemas generando las cartas de error.
 	 */
-	private void run(String... args) throws DocumentException {
+	public void run(String... args) throws DocumentException {
 		if (args.length == 0 || args[0].equals("--help"))
 			showHelp();
 		else if (args[0].equals("info"))

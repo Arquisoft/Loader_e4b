@@ -1,28 +1,25 @@
 package parser;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 
 import com.lowagie.text.DocumentException;
 
+import parser.reader.ReadList;
 import reportwriter.ReportWriter;
 
 public class ReaderSingleton {
 	private static ReaderSingleton instance;
-	private ReadList loader;
-	private ReadList master;
-	private ReadList xlsx;
-	private ReadList csv;
-	
+	private Parser loader;
+	private Parser master;
 
 	/**
 	 * Constructor privado para construir un patron singleton.
 	 */
 	private ReaderSingleton() {
-		this.xlsx = new RList();
-		this.csv = new RCsv();	
-		this.loader = xlsx;
-		this.master = new RMaster();
+		this.master = new MasterParser();
 	}
 
 	/**
@@ -43,8 +40,8 @@ public class ReaderSingleton {
 	public void loadFile(String cad) throws DocumentException {
 		try{
 			setLoader(cad);
-			loader.load(cad);
-		}catch (FileNotFoundException e) {
+			loader.parse(cad);
+		}catch (IOException e) {
 			System.err.println("No se ha encontrado el archivo especificado.");
 			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "No se ha encontrado el archivo");
 		}
@@ -56,8 +53,8 @@ public class ReaderSingleton {
 	 */
 	public void loadMasterFile(String cad) {
 		try {
-			master.load(cad);
-		}catch (FileNotFoundException e) {
+			master.parse(cad);
+		}catch (IOException e) {
 			System.err.println("No se ha encontrado el archivo csv especificado.");
 			ReportWriter.getInstance().getWriteReport().log(Level.WARNING, "No se ha encontrado el archivo csv");
 		} catch (DocumentException e) {
@@ -69,15 +66,10 @@ public class ReaderSingleton {
 	 * Selecciona el modo en el que se van a leer los documentos xlsx o csv
 	 * @param cad: ruta donde esta el fichero.
 	 */
-	public void setLoader(String cad) {
+	private void setLoader(String cad) {
 		String[] linea = cad.split("\\.");
-		String extension = linea[linea.length -1];		
-		if(extension.equals("xlsx")){
-			this.loader = xlsx;
-		} 
-		else if(extension.equals("csv")){
-			this.loader = csv;
-		}
+		String extension = linea[linea.length -1];
+		loader = new UserParser(extension);
 	}
 	
 }

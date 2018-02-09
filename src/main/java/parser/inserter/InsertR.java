@@ -1,4 +1,4 @@
-package parser;
+package parser.inserter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,7 +17,7 @@ import persistence.UserFinder;
 public class InsertR implements Insert {
 
 	@Override
-	public User save(User user, String tipo) throws FileNotFoundException, DocumentException, IOException {
+	public User save(User user, String tipo) throws DocumentException, IOException {
 		return new InsertP().save(user, tipo);
 	}
 

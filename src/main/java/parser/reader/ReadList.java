@@ -1,6 +1,7 @@
-package parser;
+package parser.reader;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import com.lowagie.text.DocumentException;
 
@@ -15,5 +16,11 @@ public interface ReadList {
 	 * @throws FileNotFoundException En caso de que no se encuentre el fichero.
 	 * @throws DocumentException En caso de que haya un error escribiendo las cartas.
 	 */
-	public void load(String path) throws FileNotFoundException, DocumentException;
+	List<String> load(String path) throws FileNotFoundException, DocumentException;
+
+	/**
+	 * Devuelve la lista con las lineas que se leyeron la última vez.
+	 * @return Una lista de strings con lo leido la última vez.
+	 */
+	List<String> getLoadedList();
 }
