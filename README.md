@@ -13,7 +13,7 @@ Además, se crea una lista de cartas personalizadas para informar del usuario y 
 
 # Como ejecutar
 Para ejecutar la aplicación hace falta tener maven correctamente instalado, se puede instalar siguiendo estas instrucciones en caso de no tenerlo: https://www.mkyong.com/maven/how-to-install-maven-in-windows/ <br>
-Una vez instalado y en la raiz del proyecto, es decir donde se pueden ver las carpetas src, cartas, bin... podemos ejecutar el siguiente comando para ejecutar la aplicación: mvn exec:java -Dexec.mainClass="main.LoadUsers", este comando ejecutará la aplicación sin argumentos, pero la aplicación tiene varios argumentos para funcionar:<br>
+Una vez instalado y en la raiz del proyecto, es decir donde se pueden ver las carpetas src, cartas, bin... podemos ejecutar el siguiente comando para compilar la aplicación: mvn compile y después de esto, con la aplicación ya compilada, podemos ejecutar el programa principal con: mvn exec:java -Dexec.mainClass="main.LoadUsers", este comando ejecutará la aplicación sin argumentos, pero la aplicación tiene varios argumentos para funcionar:<br>
 <br>
 <b>--help</b>: nos mostrará una ayuda sobre la aplicación, para ejecutar este comando ejecutaremos el siguiente comando:<br>
 mvn exec:java -Dexec.mainClass="main.LoadUsers" -Dexec.args="--help"<br>
