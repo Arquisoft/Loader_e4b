@@ -1,9 +1,8 @@
 # Loader e4b
 
-[![Join the chat at https://gitter.im/Arquisoft/citizensLoader1a](https://badges.gitter.im/Arquisoft/citizensLoader1a.svg)](https://gitter.im/Arquisoft/citizensLoader1a?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/Arquisoft/citizensLoader1a.svg?branch=master)](https://travis-ci.org/Arquisoft/citizensLoader1a)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e680327c40a44a6b8378a8171066e341)](https://www.codacy.com/app/jelabra/citizensLoader1a?utm_source=github.com&utm_medium=referral&utm_content=Arquisoft/citizensLoader1a&utm_campaign=badger)
-[![codecov](https://codecov.io/gh/Arquisoft/citizensLoader1a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/citizensLoader1a)
+[![Build Status](https://travis-ci.org/Arquisoft/Loader_e4b.svg?branch=master)](https://travis-ci.org/Arquisoft/Loader_e4b
+[![codecov](https://codecov.io/gh/Arquisoft/Loader_e4b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/Loader_e4b)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/aeca0021c27447d1abfaec98ceed9508)](https://www.codacy.com/app/jelabra/Loader_e4b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/Loader_e4b&amp;utm_campaign=Badge_Grade)
 
 Este módulo se encarga de cargar los datos de los agentes que podrán enviar incidencias al sistema, analiza sus datos y crea un informe de errores, si se producen. <br>
 Por cada agente, se almacena la información proporcionada, junto con una clave de acceso que se genera
@@ -13,7 +12,13 @@ Además, se crea una lista de cartas personalizadas para informar del usuario y 
 
 # Como ejecutar
 Para ejecutar la aplicación hace falta tener maven correctamente instalado, se puede instalar siguiendo estas instrucciones en caso de no tenerlo: https://www.mkyong.com/maven/how-to-install-maven-in-windows/ <br>
-Una vez instalado y en la raiz del proyecto, es decir donde se pueden ver las carpetas src, cartas, bin... podemos ejecutar el siguiente comando para compilar la aplicación: mvn compile y después de esto, con la aplicación ya compilada, podemos ejecutar el programa principal con: mvn exec:java -Dexec.mainClass="main.LoadUsers", este comando ejecutará la aplicación sin argumentos, pero la aplicación tiene varios argumentos para funcionar:<br>
+Una vez instalado y en la raiz del proyecto, es decir donde se pueden ver las carpetas src, cartas, bin... podemos ejecutar el siguiente comando para compilar la aplicación: mvn compile y después de esto, con la aplicación ya compilada, podemos ejecutar el programa principal con: 
+
+```
+mvn exec:java -Dexec.mainClass="main.LoadUsers"
+```
+
+Este comando ejecutará la aplicación sin argumentos, pero la aplicación tiene varios argumentos para funcionar:<br>
 <br>
 <b>--help</b>: nos mostrará una ayuda sobre la aplicación, para ejecutar este comando ejecutaremos el siguiente comando:<br>
 mvn exec:java -Dexec.mainClass="main.LoadUsers" -Dexec.args="--help"<br>
