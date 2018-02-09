@@ -33,7 +33,7 @@ public class DbTypeTest {
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 
-		List<Type> test = TypeFinder.findByCode(1);
+		List<Type> test = TypeFinder.findByType("Usuario");
 		assertEquals(test.get(0).getType(), "Usuario");
 		
 		List<Type> test2 = TypeFinder.findByType("Entity");
