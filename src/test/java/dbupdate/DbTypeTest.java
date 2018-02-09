@@ -17,8 +17,8 @@ import persistence.util.Jpa;
 
 public class DbTypeTest {
 
-	@Before
-	public void CargarTipos(){
+	@Test
+	public void ComprobarCargaTipo() {
 		ActionSingleton aS = ActionSingleton.getInstance();
 
 		Type type = new Type(1, "Usuario");
@@ -26,12 +26,10 @@ public class DbTypeTest {
 
 		aS.getAF().saveType(type);
 		aS.getAF().saveType(type2);
-	}
 
-	@Test
-	public void ComprobarCargaTipo() {
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
+		trx.begin();
 
 		List<Type> test = TypeFinder.findByType("Usuario");
 		assertEquals(test.get(0).getType(), "Usuario");
@@ -39,6 +37,7 @@ public class DbTypeTest {
 		List<Type> test2 = TypeFinder.findByType("Entity");
 		assertEquals(test2.get(0).getCode(), 2);
 
+		trx.commit();
 		mapper.close();
 	}
 	
