@@ -35,7 +35,7 @@ public class DbTypeTest {
 		assertEquals(test.get(0).getType(), "Usuario");
 		
 		List<Type> test2 = TypeFinder.findByType("Entity");
-		assertEquals(test2.get(0).getCode(), 2);
+		assertEquals(test2.get(0).getType(), "Entity");
 
 		trx.commit();
 		mapper.close();
