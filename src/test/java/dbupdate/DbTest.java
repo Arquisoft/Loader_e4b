@@ -85,7 +85,6 @@ public class DbTest {
 
 	@After
 	public void deleting() {
-		System.out.println("------ AFTER ------");
 
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();

@@ -1,10 +1,6 @@
 # Loader e4b
 
-[![Build Status](https://travis-ci.org/Arquisoft/Loader_e4b.svg?branch=master)](https://travis-ci.org/Arquisoft/Loader_e4b)
-
-[![codecov](https://codecov.io/gh/Arquisoft/Loader_e4b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/Loader_e4b)
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/aeca0021c27447d1abfaec98ceed9508)](https://www.codacy.com/app/jelabra/Loader_e4b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/Loader_e4b&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/Arquisoft/Loader_e4b.svg?branch=master)](https://travis-ci.org/Arquisoft/Loader_e4b) [![codecov](https://codecov.io/gh/Arquisoft/Loader_e4b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/Loader_e4b) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/aeca0021c27447d1abfaec98ceed9508)](https://www.codacy.com/app/jelabra/Loader_e4b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/Loader_e4b&amp;utm_campaign=Badge_Grade)
 
 Este módulo se encarga de cargar los datos de los agentes que podrán enviar incidencias al sistema, analiza sus datos y crea un informe de errores, si se producen. <br>
 Por cada agente, se almacena la información proporcionada, junto con una clave de acceso que se genera
@@ -23,14 +19,22 @@ mvn exec:java -Dexec.mainClass="main.LoadUsers"
 Este comando ejecutará la aplicación sin argumentos, pero la aplicación tiene varios argumentos para funcionar:<br>
 <br>
 <b>--help</b>: nos mostrará una ayuda sobre la aplicación, para ejecutar este comando ejecutaremos el siguiente comando:<br>
+```
 mvn exec:java -Dexec.mainClass="main.LoadUsers" -Dexec.args="--help"<br>
+```
 <br>
 <b>info</b>: nos mostrará iformación acerca de la aplicación, para ejecutar este comando ejecutaremos el siguiente comando:<br>
+
+```
 mvn exec:java -Dexec.mainClass="main.LoadUsers" -Dexec.args="info"<br>
+```
 <br>
 <b>load</b>: nos permite cargar un fichero maestro de tipos y unos usuarios a la base de datos, ambos vienen dados en ficheros, el fichero maestro está en la raiz de la aplicación y se llama master.csv, el estilo para es código,tipo es decir un tipo de usuario tiene un código y el nombre de este tipo, por ejemplo: 1,Usuario o 2,Sensor.<br>
 El fichero que cargaremos para los usuarios se la pasa como parametro a load, es decir este puede estar en cualquier parte del ordenador, para ejecutar este comando usaremos lo siguiente:<br>
+
+```
 mvn exec:java -Dexec.mainClass="main.LoadUsers" -Dexec.args="load fichero.xlsx"
+```
 
 # Authors 2017-2018  
 Óscar Marín Iglesias (UO251857)<br>
