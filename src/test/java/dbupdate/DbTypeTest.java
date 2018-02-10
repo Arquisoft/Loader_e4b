@@ -49,18 +49,20 @@ public class DbTypeTest {
 
 		aS.getAF().saveType(type);
 
-		EntityManager mapper = Jpa.createEntityManager();
-		EntityTransaction trx = mapper.getTransaction();
-		trx.begin();
+        EntityManager mapper = Jpa.createEntityManager();
+        EntityTransaction trx = mapper.getTransaction();
+        trx.begin();
 		
 		List<Type> toDelete = TypeFinder.findByCode(999);
 		assertEquals(toDelete.size(), 1);
 		
 		Jpa.getManager().remove(toDelete.get(0));
+
+        trx.commit();
+
 		toDelete = TypeFinder.findByCode(999);
 		assertTrue(toDelete.isEmpty());
-		
-		trx.commit();
+
 		mapper.close();
 	}
 

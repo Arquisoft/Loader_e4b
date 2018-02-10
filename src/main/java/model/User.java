@@ -37,7 +37,7 @@ public class User implements Serializable {
 	
 	@ManyToOne private Type tipo;
 
-	User() {
+	public User() {
 	}
 	
 	/**
