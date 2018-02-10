@@ -26,10 +26,15 @@ public class InsertT implements InsertType{
 
 		try {
 			List<Type> toDelete = findByCode(tipo.getCode());
-			for(int i=0;i<toDelete.size();i++)
-				Jpa.getManager().remove(toDelete.get(i));
-			
-			Jpa.getManager().persist(tipo);
+
+			if(toDelete.size()>=1){
+				toDelete.get(0).setType(tipo.getType());
+			}
+
+			else{
+				Jpa.getManager().persist(tipo);
+			}
+
 			trx.commit();
 		}
 		catch (PersistenceException ex) {
