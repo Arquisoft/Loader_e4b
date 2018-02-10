@@ -77,11 +77,10 @@ public class LoadUsers {
 	private void showHelp() {
 		System.out.println("Manual de ayuda para el uso de la aplicacion");
 		System.out.println("La aplicacion tiene implementadas las operaciones info, load y help");
-		System.out.println("	info: Muestra informacion relacionada con el proyecto, como los autores");
-		System.out.println(
-				"	load [file]: Permite cargar un conjunto de ficheros excel con usuarios en la base de datos, para cargar los usuarios "
+		System.out.println("\tinfo: Muestra informacion relacionada con el proyecto, como los autores");
+		System.out.println("\tload [file]: Permite cargar un conjunto de ficheros excel con usuarios en la base de datos, para cargar los usuarios "
 				+ "estos deben de tener tipos válidos que se cargan desde el fichero master.csv");
-		System.out.println("	--help: Muestra este menu de ayuda. Si no se proporcionan parametros "
+		System.out.println("\t--help: Muestra este menu de ayuda. Si no se proporcionan parametros "
 				+ "a la aplicacion se mostrara este menu");
 	}
 }

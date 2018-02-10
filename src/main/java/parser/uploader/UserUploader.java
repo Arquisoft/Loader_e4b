@@ -14,10 +14,6 @@ public class UserUploader implements ClassAppend{
     public void addMethod(List<String> toAdd) throws DocumentException, IOException {
         for(String line : toAdd) {
             String[] tipo = line.split(",");
-            for (int i = 0; i < tipo.length; i++) {
-                System.out.print(tipo[i] + " ; ");
-            }
-            System.out.println();
             crearUsuarios(tipo);
         }
     }
