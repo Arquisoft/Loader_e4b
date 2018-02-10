@@ -25,8 +25,6 @@ public class DbTest {
 	
 	@Before
 	public void setUp() {
-		System.out.println("------ SET UP ------");
-
 		ActionSingleton aS = ActionSingleton.getInstance();
 		
 		Type type = new Type(1, "Usuario");
@@ -44,8 +42,6 @@ public class DbTest {
 
 	@Test
 	public void usuarioYaExistenteDni() throws FileNotFoundException, DocumentException, IOException {
-		System.out.println("------ YA EXISTENTE ------");
-
 		ActionSingleton aS = ActionSingleton.getInstance();
 		
 		User user1 = new User("Paco", "-22.971436, -43.182565", "francisco@gmail.com", "87654321P");
@@ -68,8 +64,6 @@ public class DbTest {
 
 	@Test
 	public void usuarioConTipoNoValido() throws FileNotFoundException, DocumentException, IOException {
-		System.out.println("------ TIPO NO VALIDO ------");
-
 		ActionSingleton aS = ActionSingleton.getInstance();
 		
 		User user1 = new User("Paco", "-22.971436, -43.182565", "francisco@gmail.com", "87654321P");
