@@ -2,11 +2,8 @@
 
 [![Build Status](https://travis-ci.org/Arquisoft/Loader_e4b.svg?branch=master)](https://travis-ci.org/Arquisoft/Loader_e4b) [![codecov](https://codecov.io/gh/Arquisoft/Loader_e4b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/Loader_e4b) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/aeca0021c27447d1abfaec98ceed9508)](https://www.codacy.com/app/jelabra/Loader_e4b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/Loader_e4b&amp;utm_campaign=Badge_Grade)
 
-Este módulo se encarga de cargar los datos de los agentes que podrán enviar incidencias al sistema, analiza sus datos y crea un informe de errores, si se producen. <br>
-Por cada agente, se almacena la información proporcionada, junto con una clave de acceso que se genera
-aleatoriamente. <br>
-Toda esa información es almacenada en una base de datos que será utilizada por el otro módulo (Agents).
-Además, se crea una lista de cartas personalizadas para informar del usuario y clave introducido en el sistema y que se enviarán a los correos electrónicos que se han indicado. 
+# Descripción
+Este módulo se encarga de cargar los datos de los agentes que podrán enviar incidencias al sistema, analiza sus datos y crea un informe de errores, si se producen. 
 
 # Como ejecutar
 Para ejecutar la aplicación hace falta tener maven correctamente instalado, se puede instalar siguiendo estas instrucciones en caso de no tenerlo: https://www.mkyong.com/maven/how-to-install-maven-in-windows/ <br>
