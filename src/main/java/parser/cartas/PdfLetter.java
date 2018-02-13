@@ -11,15 +11,13 @@ import com.lowagie.text.pdf.PdfWriter;
 import model.User;
 
 public class PdfLetter extends Letter{
-	private Document document;
 	
 	@Override
 	public  void createLetter(User user) throws DocumentException, FileNotFoundException{
-		document = null;
 		FileOutputStream letter = null;
 		letter = new FileOutputStream(
 				"cartas/pdf/" + user.getIdentificador() + ".pdf");
-		document = new Document();
+		Document document = new Document();
 		PdfWriter.getInstance(document, letter);
 		document.open();
 		document.add(new Paragraph("Usuario: " + user.getUsername()

@@ -13,7 +13,6 @@ import static junit.framework.TestCase.assertEquals;
 
 public class MainTest {
 
-    private PrintStream newSystemOut;
     private PrintStream current;
     private ByteArrayOutputStream data;
 
@@ -22,7 +21,7 @@ public class MainTest {
         current = System.out;
 
         data = new ByteArrayOutputStream();
-        newSystemOut = new PrintStream(data);
+        PrintStream newSystemOut = new PrintStream(data);
 
         System.setOut(newSystemOut);
     }
