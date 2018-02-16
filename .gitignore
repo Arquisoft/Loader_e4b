@@ -25,3 +25,5 @@ target/*
 
 # Mac Files #
 .DS_Store
+
+bin/*
